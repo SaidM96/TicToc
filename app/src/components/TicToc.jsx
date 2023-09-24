@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Square } from "./Square"
 
 export const TicToc = () => {
-    const [turn,setTurn] = useState('x');
+    const [turn,setTurn] = useState('X');
     const [result, setResult] = useState('');
-    const size = 3;
-    const style = `grid grid-cols-${size}`;
+    const size = 4;
+    // const style = `grid grid-cols-${size}`;
 
     const generateBord = (size) => {
         let board = [];
@@ -25,7 +25,7 @@ export const TicToc = () => {
     
 
     const Onclick = () => {
-        turn === 'x' ? setTurn('y') : setTurn('x');
+        turn === 'X' ? setTurn('O') : setTurn('X');
     }
 
     const checkRows = (b) => {
@@ -98,7 +98,7 @@ export const TicToc = () => {
 
     return <div className=''>
         <h1 className="relative left-[100px] bottom-[50px]">{result}</h1>
-        <div className={style}>
+        <div className={`grid grid-cols-${size}`}>
             {
                 Board.map((square) => square.map((square) =>  <Square board={Board} result={result} toSetBoard={update} id={square} value={undefined} turn={turn} Onclick={Onclick} />))
             }
