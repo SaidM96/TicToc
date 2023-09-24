@@ -5,7 +5,6 @@ export const TicToc = () => {
     const [turn,setTurn] = useState('X');
     const [result, setResult] = useState('');
     const size = 4;
-    // const style = `grid grid-cols-${size}`;
 
     const generateBord = (size) => {
         let board = [];
@@ -35,7 +34,7 @@ export const TicToc = () => {
             last = b[i][0];
             for(let j = 0; j < size; ++j)
                 if (last === b[i][j]) ggR++;
-            if (ggR === 3) return true;
+            if (ggR === size) return true;
             ggR = 0;
         }
         return false;
@@ -65,14 +64,14 @@ export const TicToc = () => {
             if (lCorner === b[i][j]) ggD++;
             j++;
         }
-        if (ggD === 3) return true;
+        if (ggD === size) return true;
         ggD = 0;
         j = size - 1;
         for(i = 0; i < size; ++i){
             if (rCorner === b[i][j]) ggD++;
             j--;
         }
-        if (ggD === 3) return true;
+        if (ggD === size) return true;
         return false
     }
 
